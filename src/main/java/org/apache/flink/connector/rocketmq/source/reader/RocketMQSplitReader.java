@@ -43,16 +43,7 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.Nullable;
 import java.io.IOException;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -217,7 +208,39 @@ public class RocketMQSplitReader<T> implements SplitReader<MessageView, RocketMQ
         this.currentOffsetTable.remove(messageQueue);
     }
 
-    // ---------------- private helper class ------------------------
+    public InnerConsumer getConsumer() {
+        return consumer;
+    }
+
+    public Configuration getConfiguration() {
+        return configuration;
+    }
+
+    public SourceReaderContext getSourceReaderContext() {
+        return sourceReaderContext;
+    }
+
+    public RocketMQDeserializationSchema<T> getDeserializationSchema() {
+        return deserializationSchema;
+    }
+
+    public boolean isCommitOffsetsOnCheckpoint() {
+        return commitOffsetsOnCheckpoint;
+    }
+
+    public SortedMap<Long, Map<MessageQueue, Long>> getOffsetsToCommit() {
+        return offsetsToCommit;
+    }
+
+    public ConcurrentMap<MessageQueue, Tuple2<Long, Long>> getCurrentOffsetTable() {
+        return currentOffsetTable;
+    }
+
+    public RocketMQSourceReaderMetrics getRocketmqSourceReaderMetrics() {
+        return rocketmqSourceReaderMetrics;
+    }
+
+// ---------------- private helper class ------------------------
 
     private static class RocketMQRecordsWithSplitIds<T> implements RecordsWithSplitIds<T> {
 

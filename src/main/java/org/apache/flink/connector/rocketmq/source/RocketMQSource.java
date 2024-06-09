@@ -188,4 +188,20 @@ public class RocketMQSource<OUT>
     public TypeInformation<OUT> getProducedType() {
         return deserializationSchema.getProducedType();
     }
+
+    public OffsetsSelector getStartingOffsetsSelector() {
+        return startingOffsetsSelector;
+    }
+
+    public OffsetsSelector getStoppingOffsetsSelector() {
+        return stoppingOffsetsSelector;
+    }
+
+    public Configuration getConfiguration() {
+        return configuration;
+    }
+
+    public RocketMQDeserializationSchema<OUT> getDeserializationSchema() {
+        return deserializationSchema;
+    }
 }

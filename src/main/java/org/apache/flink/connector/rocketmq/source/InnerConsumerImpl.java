@@ -35,23 +35,14 @@ import org.apache.rocketmq.common.ThreadFactoryImpl;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.apache.rocketmq.common.message.MessageQueue;
 import org.apache.rocketmq.tools.admin.DefaultMQAdminExt;
+import org.apache.rocketmq.tools.admin.MQAdminExt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.management.ManagementFactory;
 import java.time.Duration;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.*;
+import java.util.concurrent.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -183,6 +174,18 @@ public class InnerConsumerImpl implements InnerConsumer {
         } catch (MQClientException e) {
             throw new FlinkRuntimeException(e);
         }
+    }
+
+    public Configuration getConfiguration() {
+        return configuration;
+    }
+
+    public DefaultLitePullConsumer getConsumer() {
+        return consumer;
+    }
+
+    public ExecutorService getCommonExecutorService() {
+        return commonExecutorService;
     }
 
     @Override
@@ -339,7 +342,14 @@ public class InnerConsumerImpl implements InnerConsumer {
                 commonExecutorService);
     }
 
-    /** The implementation for offsets retriever with a consumer and an admin client. */
+    @Override
+    public MQAdminExt getMqAdmin() {
+        return this.adminExt;
+    }
+
+    /**
+     * The implementation for offsets retriever with a consumer and an admin client.
+     */
     @VisibleForTesting
     public static class RemotingOffsetsRetrieverImpl
             implements OffsetsSelector.MessageQueueOffsetsRetriever, AutoCloseable {

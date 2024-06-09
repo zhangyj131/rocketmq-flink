@@ -18,8 +18,8 @@
 package org.apache.flink.connector.rocketmq.source;
 
 import org.apache.flink.connector.rocketmq.source.reader.MessageView;
-
 import org.apache.rocketmq.common.message.MessageQueue;
+import org.apache.rocketmq.tools.admin.MQAdminExt;
 
 import java.time.Duration;
 import java.util.Collection;
@@ -134,4 +134,11 @@ public interface InnerConsumer extends AutoCloseable {
      * @return offset for message queue
      */
     CompletableFuture<Void> commitOffset(MessageQueue messageQueue, long offset);
+
+    /**
+     * 新增方法
+     *
+     * @return
+     */
+    MQAdminExt getMqAdmin();
 }

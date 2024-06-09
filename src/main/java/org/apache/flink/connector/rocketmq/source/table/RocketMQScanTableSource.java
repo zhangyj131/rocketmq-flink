@@ -39,11 +39,7 @@ import org.apache.flink.table.data.StringData;
 import org.apache.flink.table.descriptors.DescriptorProperties;
 import org.apache.flink.table.types.DataType;
 
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 import java.util.stream.Stream;
 
 /** Defines the scan table source of RocketMQ. */
@@ -230,7 +226,78 @@ public class RocketMQScanTableSource implements ScanTableSource, SupportsReading
         return consumerProps;
     }
 
-    // --------------------------------------------------------------------------------------------
+    public DescriptorProperties getProperties() {
+        return properties;
+    }
+
+    public TableSchema getSchema() {
+        return schema;
+    }
+
+    public String getConsumerOffsetMode() {
+        return consumerOffsetMode;
+    }
+
+    public long getConsumerOffsetTimestamp() {
+        return consumerOffsetTimestamp;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public String getConsumerGroup() {
+        return consumerGroup;
+    }
+
+    public String getNameServerAddress() {
+        return nameServerAddress;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public String getSql() {
+        return sql;
+    }
+
+    public String getAccessKey() {
+        return accessKey;
+    }
+
+    public String getSecretKey() {
+        return secretKey;
+    }
+
+    public long getStopInMs() {
+        return stopInMs;
+    }
+
+    public long getPartitionDiscoveryIntervalMs() {
+        return partitionDiscoveryIntervalMs;
+    }
+
+    public long getStartMessageOffset() {
+        return startMessageOffset;
+    }
+
+    public long getStartTime() {
+        return startTime;
+    }
+
+    public boolean isUseNewApi() {
+        return useNewApi;
+    }
+
+    public long getPollTime() {
+        return pollTime;
+    }
+
+    public List<String> getMetadataKeys() {
+        return metadataKeys;
+    }
+// --------------------------------------------------------------------------------------------
     // Metadata handling
     // --------------------------------------------------------------------------------------------
 

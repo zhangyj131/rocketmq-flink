@@ -17,6 +17,7 @@
 
 package org.apache.flink.connector.rocketmq.source;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.flink.annotation.PublicEvolving;
 import org.apache.flink.api.common.serialization.DeserializationSchema;
 import org.apache.flink.api.connector.source.Boundedness;
@@ -26,8 +27,6 @@ import org.apache.flink.connector.rocketmq.common.config.RocketMQConfigBuilder;
 import org.apache.flink.connector.rocketmq.source.enumerator.offset.OffsetsSelector;
 import org.apache.flink.connector.rocketmq.source.enumerator.offset.OffsetsSelectorNoStopping;
 import org.apache.flink.connector.rocketmq.source.reader.deserializer.RocketMQDeserializationSchema;
-
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -194,8 +193,30 @@ public class RocketMQSourceBuilder<OUT> {
                 configuration);
     }
 
-    // ------------- private helpers  --------------
-    private void sanityCheck() {}
+    public RocketMQConfigBuilder getConfigBuilder() {
+        return configBuilder;
+    }
 
-    private void parseAndSetRequiredProperties() {}
+    public OffsetsSelector getMinOffsetsSelector() {
+        return minOffsetsSelector;
+    }
+
+    public OffsetsSelector getMaxOffsetsSelector() {
+        return maxOffsetsSelector;
+    }
+
+    public Boundedness getBoundedness() {
+        return boundedness;
+    }
+
+    public RocketMQDeserializationSchema<OUT> getDeserializationSchema() {
+        return deserializationSchema;
+    }
+
+    // ------------- private helpers  --------------
+    protected void sanityCheck() {
+    }
+
+    protected void parseAndSetRequiredProperties() {
+    }
 }

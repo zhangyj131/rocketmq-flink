@@ -52,6 +52,14 @@ public class RocketMQRecordEmitter<T>
         }
     }
 
+    public RocketMQDeserializationSchema<T> getDeserializationSchema() {
+        return deserializationSchema;
+    }
+
+    public SourceOutputWrapper<T> getSourceOutputWrapper() {
+        return sourceOutputWrapper;
+    }
+
     private static class SourceOutputWrapper<T> implements Collector<T> {
 
         private SourceOutput<T> sourceOutput;

@@ -1,4 +1,9 @@
 # RocketMQ-Flink
+
+main_github 分支是对应github上的main分支，对应github上拉取时间是20240611
+
+
+
 [![Build Status](https://app.travis-ci.com/apache/rocketmq-flink.svg?branch=main)](https://app.travis-ci.com/apache/rocketmq-flink) [![Coverage Status](https://coveralls.io/repos/github/apache/rocketmq-flink/badge.svg?branch=main)](https://coveralls.io/github/apache/rocketmq-flink?branch=main)
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/apache/rocketmq-flink.svg)](http://isitmaintained.com/project/apache/rocketmq-flink "Average time to resolve an issue")

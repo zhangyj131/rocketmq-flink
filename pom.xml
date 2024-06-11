@@ -218,6 +218,7 @@
     <build>
         <plugins>
 <!--            <plugin>-->
+            <!--注释原因 zdtp打包，否则该插件会把所有的打包进去。 凯哥注释-->
 <!--                <groupId>org.apache.maven.plugins</groupId>-->
 <!--                <artifactId>maven-shade-plugin</artifactId>-->
 <!--                <version>3.2.4</version>-->
@@ -330,6 +331,7 @@
 				don't work. You have to use the fully qualified name, i.e.
 				"mvn com.diffplug.spotless:spotless-maven-plugin:apply" -->
 <!--            <plugin>-->
+            <!--代码风格，不注释导致无法编译-->
 <!--                <groupId>com.diffplug.spotless</groupId>-->
 <!--                <artifactId>spotless-maven-plugin</artifactId>-->
 <!--                <version>${spotless.version}</version>-->

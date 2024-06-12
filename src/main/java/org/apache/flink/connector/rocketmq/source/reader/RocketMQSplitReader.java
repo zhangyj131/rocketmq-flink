@@ -84,7 +84,8 @@ public class RocketMQSplitReader<T> implements SplitReader<MessageView, RocketMQ
         this.offsetsToCommit = new TreeMap<>();
         this.currentOffsetTable = new ConcurrentHashMap<>();
 
-        this.consumer = new InnerConsumerImpl(configuration);
+        int indexOfSubtask = sourceReaderContext.getIndexOfSubtask();
+        this.consumer = new InnerConsumerImpl(configuration, "SplitReader_" + indexOfSubtask);
         this.consumer.start();
 
         this.rocketmqSourceReaderMetrics = rocketmqSourceReaderMetrics;

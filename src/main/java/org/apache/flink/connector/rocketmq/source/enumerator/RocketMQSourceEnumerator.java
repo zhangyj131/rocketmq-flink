@@ -125,7 +125,7 @@ public class RocketMQSourceEnumerator
 
     @Override
     public void start() {
-        consumer = new InnerConsumerImpl(configuration);
+        consumer = new InnerConsumerImpl(configuration, "SplitEnumerator");
         consumer.start();
 
         if (partitionDiscoveryIntervalMs > 0) {

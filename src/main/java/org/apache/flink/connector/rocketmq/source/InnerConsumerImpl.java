@@ -383,7 +383,7 @@ public class InnerConsumerImpl implements InnerConsumer {
     @Override
     public CompletableFuture<Void> commitOffset(MessageQueue messageQueue, long offset) {
         return CompletableFuture.runAsync(
-                () -> consumer.getOffsetStore().updateOffset(messageQueue, offset, true),
+                () -> consumer.getOffsetStore().updateOffset(messageQueue, offset, false),
                 commonExecutorService);
     }
 
